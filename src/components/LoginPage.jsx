@@ -3,8 +3,11 @@ import Header from "./Header";
 import { validateForm } from "../utils/FormValidate";
 import { auth } from "../utils/FireBase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router";
+
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [isSignIn, setisSignIn] = useState(true);
 
   const [errorMessage, seterrorMessage] = useState("");
@@ -28,6 +31,7 @@ const LoginPage = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -37,11 +41,13 @@ const LoginPage = () => {
         });
     } else {
       
+
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
            
         })
         .catch((error) => {
