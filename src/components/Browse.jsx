@@ -10,7 +10,7 @@ const Browse = () => {
  
 
   return (
-    <div>
+    <div >
       <Header showSignOut={true}/>
       <MainContainer/>
       <SecondaryContainer/>

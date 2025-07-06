@@ -15,7 +15,6 @@ const useVideoBackground = (movieId) => {
 
     const filterData = json.results?.filter( (video) => video.type === "Trailer" );
     const trailer = filterData[0];
-    console.log(trailer);
     dispatch(addNowPlayingMovies(trailer));
   };
 

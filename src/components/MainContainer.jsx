@@ -10,12 +10,11 @@ const MainContainer = () => {
     if (!movies) return ;
 
     const mainMovie = movies[0];
-    console.log(mainMovie);
 
     const {title, overview, id} = mainMovie
 
   return (
-    <div className="mt-22">
+    <div className="mt-22 ">
         <VideoTitle title={title} overview={overview} />
         <VideoBackground movieId={id}/>
     </div>
