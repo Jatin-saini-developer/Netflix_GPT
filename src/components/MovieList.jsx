@@ -2,18 +2,22 @@ import React from "react";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-  console.log(movies);
 
   return (
-    <div className="bg-black text-white pt-6">
-
-      <h1 className="font-bold  text-3xl">{title}</h1>
-      <div className="flex overflow-x-scroll "  style={{ scrollbarWidth: 'none' }}>
-        
+    <div className="bg- text-white pt-6">
+      <h1 className="px-3 py-3 font-bold  text-3xl">{title}</h1>
+      <div
+        className="flex overflow-x-scroll "
+        style={{ scrollbarWidth: "none" }}
+      >
         <div className="flex">
-          {movies?.map((movie) => (
-            <MovieCard key={movie.id} posterPath={movie.poster_path} />
-          ))}
+          {Array.isArray(movies) ? (
+            movies.map((movie) => (
+              <MovieCard key={movie.id} posterPath={movie.poster_path} />
+            ))
+          ) : (
+            <p className="px-3">No movies available</p>
+          )}
         </div>
       </div>
     </div>
