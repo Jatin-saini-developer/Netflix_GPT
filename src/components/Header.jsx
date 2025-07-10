@@ -2,10 +2,19 @@ import React from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/FireBase";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { toogleGpt } from "../redux/GptSlice";
 
 
 
 const Header = ({ showSignOut = false }) => {
+
+  const dispatch = useDispatch();
+
+  const handleShowGpt = ()=>{
+    dispatch(toogleGpt());
+
+  }
 
   const navigate = useNavigate()
 
@@ -31,6 +40,16 @@ const Header = ({ showSignOut = false }) => {
 
       {showSignOut && (
         <div className="absolute top-4 right-4 z-50">
+
+          <button
+           onClick={handleShowGpt}
+           className="bg-violet-800 text-white px-4 py-2 rounded hover:bg-violet-700">
+            GPT
+           </button>
+
+
+
+
           <button
             onClick={handleSignOut}
             className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
