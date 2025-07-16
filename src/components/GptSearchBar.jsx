@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import client from "../utils/OpenAi";
+import {OPEN_API} from "../utils/constants";
 
 const GptSearchBar = () => {
   const search = useRef(null);
@@ -8,14 +9,18 @@ const GptSearchBar = () => {
     console.log(search.current.value);
 
     const gptQuery =
-      "Act as a Movie Recommendation system and suggest some movies for the query : " +
+      "Act as a Movie Recommendation system. Only respond with **exactly 5 movie names** for this query: " +
       search.current.value +
-      ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+      ". Return them **only as a comma-separated list**, with nothing else. For example: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
 
     const completion = await client.chat.completions.create({
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${OPEN_API} `, 
+      },
       model: "mistralai/mistral-7b-instruct",
       messages: [{ role: "user", content: gptQuery }],
-       max_tokens: 512 
+      max_tokens: 512,
     });
 
     console.log(completion.choices);
