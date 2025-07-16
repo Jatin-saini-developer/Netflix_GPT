@@ -1,11 +1,10 @@
 import React from 'react'
-// import GptSearchBar from './GptSearchBar'
+import GptSearchBar from './GptSearchBar'
 
 const GptSearch = () => {
   return (
     <div>
-      {/* <GptSearchBar/> */}
-      hello
+      <GptSearchBar/>
     </div>
   )
 }
