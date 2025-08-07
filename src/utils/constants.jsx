@@ -10,4 +10,4 @@ export const API_Options = {
 export const IMG_URL = "https://image.tmdb.org/t/p/w500/"
 
 
-export const OPEN_API = "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"
+export const OPEN_API = "sk-ijkl1234ijkl1234ijkl1234ijkl1234ijkl1234"

@@ -14,10 +14,10 @@ const GptSearchBar = () => {
       ". Return them **only as a comma-separated list**, with nothing else. For example: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
 
     const completion = await client.chat.completions.create({
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${OPEN_API} `, 
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   Authorization: `Bearer ${OPEN_API} `, 
+      // },
       model: "mistralai/mistral-7b-instruct",
       messages: [{ role: "user", content: gptQuery }],
       max_tokens: 512,
@@ -27,13 +27,14 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="bg-slate-600  pt-40">
+    <div className="pt-40 flex justify-center w-full max-w-7xl">
       <form
+    className="  px-4 flex gap-2"
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <input ref={search} type="search" placeholder="kya dekhega lavde aaj" />
+        <input className="bg-white" ref={search} type="search" placeholder="What Would You Like to Watch..." />
 
         <button
           className="bg-violet-800 text-white px-4 py-2 rounded-lg"
